@@ -108,3 +108,10 @@ const search = async () => {
 };
 // search();
 
+const deleteDoc = async () => {
+  // delete the student where name set to "Ido"
+  await Student.deleteOne({ name: 'Ido' });
+  // delete the student where date set to "02/04/1998"
+  await Student.deleteOne({ birth: new Date('02/04/1998') });
+};
+// deleteDoc();
