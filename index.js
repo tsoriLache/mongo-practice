@@ -66,3 +66,22 @@ const insertStudentData = (studentData) => {
 };
 // insertStudentData()
 
+const query = async () => {
+  //get all students
+  const allStudents = await Student.find({});
+  // get all students with name set to "Ido"
+  const idos = await Student.find({ name: 'ido' });
+  // get all students where courses include "Law"
+  const lawStudents = await Student.find({ courses: { $in: ['Law'] } });
+  // get all students where courses include "Java" and gender set to "Female"
+  const javaFemaleStudents = await Student.find({
+    $and: [{ courses: { $in: ['Java'] } }, { gender: 'female' }],
+  });
+  // get all students where birth > 05/05/1998
+  const bornAfterStudents = await Student.find({
+    birth: { $gt: new Date('05/05/1998') },
+  });
+  // get all students where phone starts with 054
+  const partnerStudents = await Student.find({ phone: /^054/ });
+};
+// query();
