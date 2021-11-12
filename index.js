@@ -85,3 +85,18 @@ const query = async () => {
   const partnerStudents = await Student.find({ phone: /^054/ });
 };
 // query();
+
+const update = async () => {
+  //   add a JavaScript course to the students where name set to "Yahalom"
+  await Student.updateMany(
+    { name: 'Yahalom' },
+    { $push: { courses: 'JavaScript' } }
+  );
+  //   update the birth to 02/12/1998 where name set to "Koren"
+  await Student.updateMany(
+    { name: 'Koren' },
+    { birth: new Date('02/12/1998') }
+  );
+};
+// update();
+
