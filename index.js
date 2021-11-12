@@ -100,3 +100,11 @@ const update = async () => {
 };
 // update();
 
+const search = async () => {
+  // find all students that have a name that contains the letter "o"
+  const oInNameStudents = await Student.find({ name: /o/ });
+  // find all students that have a surName that contains the letter "h" or "y"
+  const HorYInSurnameStudents = await Student.find({ name: /[hy]/ });
+};
+// search();
+
