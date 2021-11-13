@@ -94,3 +94,24 @@ const insertComments = () => {
     },
   ]);
 };
+const query = async () => {
+  // find all users
+  await User.find({});
+  // find all posts
+  await Post.find({});
+  // find all posts that was authored by "GoodGuyGreg"
+  await Post.find({ username: 'GoodGuyGreg' });
+  // find all posts that was authored by "ScumbagSteve"
+  await Post.find({ username: 'ScumbagSteve' });
+  // find all comments
+  await Comment.find({});
+  // find all comments that was authored by "GoodGuyGreg"
+  await Comment.find({ username: 'GoodGuyGreg' });
+  // find all comments that was authored by "ScumbagSteve"
+  await Comment.find({ username: 'ScumbagSteve' });
+  // find all comments belonging to the post "Reports a bug in your code"
+  const wantedPostId = (await Post.find({ post: 'Reports a bug in your code' }))
+    ._id;
+
+  console.log(await Comment.find({ post: wantedPostId }));
+};
